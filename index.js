@@ -1,4 +1,5 @@
 
+const { on } = require('nodemon');
 const contacts = require('./contacts')
 const argv = require('yargs').argv;
 
@@ -10,15 +11,18 @@ async function invokeAction({ action, id, name, email, phone }) {
         break;
   
       case 'get':
-        // ... id
+        const oneContact = await contacts.getContactById(id)
+        console.log(oneContact)
         break;
   
       case 'add':
-        // ... name email phone
+     const newContact = await contacts.addContact({name, email, phone })
+     console.log(newContact)
         break;
   
       case 'remove':
-        // ... id
+        const result = await contacts.removeContact(id)
+        console.log(result)
         break;
   
       default:

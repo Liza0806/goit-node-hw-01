@@ -1,9 +1,5 @@
-// const fs = require("fs/promises")
-// const readFile = async () =>{
-//     const data = await fs.readFile("./db/contacts.json", "utf-8")
-//     return JSON.parse(data)
-// }
-console.log("hello fucking world")
+
+
 const { nanoid } = require("nanoid");
 const path = require("path")
 const fs = require("fs/promises");
@@ -34,7 +30,7 @@ async function removeContact(contactId) {
     return result
 }
 
-async function addContact(name, email, phone) {
+async function addContact({name, email, phone}) {
     const contacts = await listContacts()
     const newContact = {
         id: nanoid(),
